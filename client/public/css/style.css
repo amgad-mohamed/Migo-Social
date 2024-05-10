@@ -1,0 +1,45 @@
+.nav-item-btn {
+  border-radius: 20px;
+  background-color: #894BC5;
+  padding: 7px 20px;
+  color: white;
+  font-weight: 600;
+  letter-spacing: .5px;
+}
+.error-message {
+  color: red;
+  font-size: 12px;
+}
+.bg-image {
+  background-image: url("/images/register_image.png");
+  height: 100%;
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-position: center;
+  height: 100vh;
+}
+.bg-login {
+  background-image: url("/images/login_image.png");
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-position: center;
+}
+.home-image {
+  background-image: url("/images/Home-image.png");
+  height: 100vh;
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-position: center;
+}
+.register-title {
+  text-shadow: 2px 2px 8px #894BC9;
+  color: #894BC9;
+  font-weight: 700;
+  letter-spacing: .5px;
+  font-size: 100px;
+}
+.logo {
+  width: 100px;
+  height: 45px;
+  border-radius: 30%;
+}
