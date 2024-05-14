@@ -1,13 +1,15 @@
-import { useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { Modal } from "antd";
 import Link from "next/link";
 import AuthForm from "../components/forms/AuthForm";
 import { useRouter } from "next/router";
+import { useContext } from "react";
+import { UserContext } from "../context";
+import Cookies from 'js-cookie';
+
 const Login = () => {
+  const { state, setState } = useContext(UserContext);
   const router = useRouter();
   const initialValues = {
     email: "",
@@ -23,8 +25,11 @@ const Login = () => {
   const url = `${process.env.NEXT_PUBLIC_API_URL}`;
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
-      const { data } = await axios.post(`${url}/login`, values);
+      const { data } = await axios.post(`/login`, values);
       router.push("/");  
+      setState({ ...state, user: data.user, token: data.token });
+      Cookies.set("token", data.token);
+      Cookies.set("user", JSON.stringify(data.user));
       resetForm();
       toast.success(`Welcome back ${data.user.name}`);
     } catch (error) {
@@ -33,7 +38,6 @@ const Login = () => {
       setSubmitting(false);
     }
   };
-
   return (
     <div className="container-fluid bg-login py-5 ">
       <div className="row py-3 mt-5">
@@ -54,7 +58,7 @@ const Login = () => {
             <div className="col-md-4 mx-auto bg-light text-center ">
               <p className="font-weight-bold">
                 Don't have an account?
-                <Link href="/register"> Register</Link>
+                <Link href="/register" className="text-decoration-none"> Register</Link>
               </p>
             </div>
           </div>

@@ -24,10 +24,9 @@ const Register = () => {
     secret: Yup.string().required("Answer is required"),
   });
   const url = `${process.env.NEXT_PUBLIC_API_URL}`;
-  console.log(url);
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
-      const { data } = await axios.post(`${url}/register`, values);
+      const { data } = await axios.post(`/register`, values);
       setOk(data.ok);
       resetForm();
     } catch (error) {

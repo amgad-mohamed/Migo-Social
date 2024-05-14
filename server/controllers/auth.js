@@ -37,10 +37,21 @@ export const login = async (req, res) => {
   if (!user) return res.status(400).json("Email is not registered");
   const match = await comparePassword(password, user.password);
   if (!match) return res.status(400).json("Invalid password");
-  const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+  const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
     expiresIn: "7d",
   });
   user.password = undefined;
   user.secret = undefined;
   res.json({ token, user });
+};
+
+export const currentUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.auth._id);
+
+    res.json({ ok: true });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  } 
 };

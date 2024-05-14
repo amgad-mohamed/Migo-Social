@@ -1,10 +1,12 @@
 .nav-item-btn {
   border-radius: 20px;
   background-color: #894BC5;
-  padding: 7px 20px;
+  padding: 5px 20px;
   color: white;
   font-weight: 600;
   letter-spacing: .5px;
+  cursor: pointer;  
+  height: 40px;
 }
 .error-message {
   color: red;

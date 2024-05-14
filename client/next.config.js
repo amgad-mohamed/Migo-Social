@@ -1,28 +1,15 @@
-// const withTM = require('next-transpile-modules')(['antd']);
+// // next.config.js
+// const withTM = require('next-transpile-modules')(['@ant-design/icons']);
 
 // module.exports = withTM({
 //   webpack: (config, { isServer }) => {
+//     // Fixes npm packages that depend on `fs` module
 //     if (!isServer) {
-//       // only compile Less files on the client side
-//       config.module.rules.push({
-//         test: /\.less$/,
-//         use: [
-//           { loader: 'style-loader' },
-//           { loader: 'css-loader', options: { importLoaders: 1 } },
-//           {
-//             loader: 'less-loader',
-//             options: {
-//               lessOptions: {
-//                 javascriptEnabled: true,
-//                 modifyVars: {
-//                   '@primary-color': '#1DA57A', // Customize Ant Design theme here
-//                 },
-//               },
-//             },
-//           },
-//         ],
-//       });
+//       config.node = {
+//         fs: 'empty'
+//       }
 //     }
+
 //     return config;
-//   },
+//   }
 // });
